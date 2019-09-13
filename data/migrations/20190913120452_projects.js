@@ -14,7 +14,8 @@ exports.up = function(knex) {
             .string('description', 500)
 
         row
-            .boolean(false)    
+            .boolean('completed')
+            .notNullable()    
     })
 
     .createTable('resources', row => {
@@ -73,7 +74,8 @@ exports.up = function(knex) {
             .string('notes', 1000)
         
         row
-            .boolean(false)
+            .boolean('completed')
+            .notNullable()    
     })
 };
 
