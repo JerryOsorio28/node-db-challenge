@@ -22,7 +22,7 @@ function getTasks (id) {
     return db('projects as p')
         .join('tasks as t', 'p.id', 't.project_id')
         .where({ project_id: id })
-        .select('p.project_name', 'p.project_description', 't.description', 't.notes')
+        .select('p.project_name', 'p.project_description', 't.description', 't.notes', 't.completed')
 };
 
 function getResources () {
