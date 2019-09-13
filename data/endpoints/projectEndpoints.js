@@ -59,8 +59,32 @@ router.post('/', (req, res) => {
 
     const projectData = req.body;
 
-    Projects.addProject()
-    .insert(projectData)
+    Projects.addProject(projectData)
+    .then(project => {
+        res.status(200).json(project)
+    })
+    .catch(err => {
+        res.status(500).json(err.response)
+    })
+})
+router.post('/:id/tasks', (req, res) => {
+
+    const taskData = req.body;
+
+    Projects.addTasks(taskData)
+    .then(task => {
+        res.status(200).json(task)
+    })
+    .catch(err => {
+        res.status(500).json(err.response)
+    })
+})
+
+router.post('/:id/resources', (req, res) => {
+
+    const projectData = req.body;
+
+    Projects.addProject(projectData)
     .then(project => {
         res.status(200).json(project)
     })

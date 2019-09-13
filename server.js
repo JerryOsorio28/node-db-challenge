@@ -10,7 +10,7 @@ server.use(express.json())
 //import endpoints router
 const projectEndpoints = require('./data/endpoints/projectEndpoints');
 
-//have server use your enpoints
+//have server use your endpoints
 server.use('/api/projects', projectEndpoints)
 
 //testing server
