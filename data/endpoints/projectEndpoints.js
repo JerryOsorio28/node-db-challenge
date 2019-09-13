@@ -82,11 +82,11 @@ router.post('/:id/tasks', (req, res) => {
 
 router.post('/:id/resources', (req, res) => {
 
-    const projectData = req.body;
+    const resourceData = req.body;
 
-    Projects.addProject(projectData)
-    .then(project => {
-        res.status(200).json(project)
+    Projects.addResources(resourceData)
+    .then(resource => {
+        res.status(200).json(resource)
     })
     .catch(err => {
         res.status(500).json(err.response)
