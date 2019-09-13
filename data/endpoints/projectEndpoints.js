@@ -9,8 +9,16 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
 
+    
     Projects.getProjects()
-        .then(projects => {
+    .then(projects => {
+        {projects.map(data => {
+            if(data.completed === 1){
+                data.completed = true
+            } else {
+                data.completed = false
+            }
+        })}
             res.status(200).json(projects)
         })
         .catch(err => {
@@ -24,6 +32,7 @@ router.get('/:id', (req, res) => {
 
     Projects.getProjectById(id)
         .then(projects => {
+            
             res.status(200).json(projects)
         })
         .catch(err => {
