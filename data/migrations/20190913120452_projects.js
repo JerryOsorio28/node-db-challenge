@@ -6,11 +6,11 @@ exports.up = function(knex) {
         tbl.increments(); //ID auto increments
 
         tbl
-            .string('name', 100)
+            .string('project_name', 100)
             .notNullable()
 
         tbl
-            .string('description', 500)
+            .string('project_description', 500)
 
         tbl
             .boolean('completed')
