@@ -39,12 +39,13 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
-
+  ## RDBMS or Relational Database Management System - where we do pretty much everything when it comes to our db, all the querying, updating, managing storage, etc. SQL or Structure Query Language - basically the language mostly used to QUERY RDBMS.
 - [ ] Why do tables need a `primary key`?
-
+  ## A primary key is needed to for a few reasons, one of is, all tables must be unique, having a primary key makes them unique, also it's a way to merge by primary key and foreign key 2 different tables.
 - [ ] What is the name given to a table column that references the primary key on another table.
-
+  ## Foreign Keys
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+  ## What do we need... well, both tables need to be something that can be used multiple times. Ex. A recipe can have many ingredients, and also the ingredients can be used in many recipes.
 
 ## Minimum Viable Product
 
@@ -55,11 +56,11 @@ Complete the following tasks:
 - [ ] Design the data model and use _knex migrations_ to create the database and tables.
 - [ ] Build an API with endpoints for:
   - [ ] adding resources.
-  - [ ] retrieving a list of resources.
+  - [x] retrieving a list of resources.
   - [ ] adding projects.
-  - [ ] retrieving a list of projects.
+  - [x] retrieving a list of projects.
   - [ ] adding tasks.
-  - [ ] retrieving a list of tasks. **The list of tasks should include the project name and project description**.
+  - [x] retrieving a list of tasks. **The list of tasks should include the project name and project description**.
 - [ ] When returning `project` or `task` information, the `completed` property should be `true` or `false`.
 
 For example, instead of returning a `task` that looks like this:
