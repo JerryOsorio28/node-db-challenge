@@ -5,12 +5,11 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('resources').insert([
-        { name: 'Resource Name Here', description: 'Description here'},
-        { name: 'Resource Name Here', description: 'Description here'},
-        { name: 'Resource Name Here', description: 'Description here'},
-        { name: 'Resource Name Here', description: 'Description here'},
-        { name: 'Resource Name Here', description: 'Description here'},
-        { name: 'Resource Name Here', description: 'Description here'},
+        { name: 'Resource 1', description: 'Description here'}, //1
+        { name: 'Resource 2', description: 'Description here'}, //2
+        { name: 'Resource 3', description: 'Description here'}, //3
+        { name: 'Resource 4', description: 'Description here'}, //4
+        { name: 'Resource 5', description: 'Description here'}, //5
       ]);
     });
 };

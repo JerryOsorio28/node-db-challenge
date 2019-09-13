@@ -1,40 +1,38 @@
 
 exports.up = function(knex) {
   return knex.schema
-    .createTable('projects', row => {
+    .createTable('projects', tbl => {
 
-        row.increments(); //ID auto increments
+        tbl.increments(); //ID auto increments
 
-        row
+        tbl
             .string('name', 100)
-            .unique()
             .notNullable()
 
-        row
+        tbl
             .string('description', 500)
 
-        row
+        tbl
             .boolean('completed')
             .notNullable()    
     })
 
-    .createTable('resources', row => {
+    .createTable('resources', tbl => {
 
-        row.increments();
+        tbl.increments();
 
-        row
+        tbl
             .string('name', 100)
-            .unique()
             .notNullable()
 
-        row
+        tbl
             .string('description')
     })
 
-    .createTable('project-resources', row => {
+    .createTable('project-resources', tbl => {
 
         //Foreign Keys
-        row
+        tbl
             .integer('project_id', 100)
             .unsigned()
             .references('id')
@@ -42,7 +40,7 @@ exports.up = function(knex) {
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
 
-        row
+        tbl
             .integer('resource_id', 100)
             .unsigned()
             .references('id')
@@ -50,39 +48,38 @@ exports.up = function(knex) {
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
 
-            row.primary(['project_id', 'resource_id'])
+        tbl.primary(['project_id', 'resource_id']) // the combination of the two keys becomes our primary key will enforce unique combinations of ids
     })
         
-    .createTable('tasks', row => {
+    .createTable('tasks', tbl => {
 
-        row.increments();
-            
         //Foreign Keys
-        row
+        tbl
             .integer('project_id', 100)
             .notNullable()
             .unsigned()
             .references('id')
             .inTable('projects')
             .onDelete('CASCADE')
-            .onUpdate('CASCADE')
+            .onUpdate('CASCADE') 
 
-        row
+        tbl
             .string('description', 500)
-            .notNullable()
-        row
+            .notNullable();
+        tbl
             .string('notes', 1000)
         
-        row
+        tbl
             .boolean('completed')
-            .notNullable()    
+            .notNullable()
+
     })
 };
 
 exports.down = function(knex) {
     return knex.schema
-        .dropIfTableExists('tasks')
-        .dropIfTableExists('project-resources')
-        .dropIfTableExists('resources')
-        .dropIfTableExists('projects')
+        .dropTableIfExists('tasks')
+        .dropTableIfExists('project-resources')
+        .dropTableIfExists('resources')
+        .dropTableIfExists('projects')
 };
