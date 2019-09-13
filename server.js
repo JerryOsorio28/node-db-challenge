@@ -7,8 +7,8 @@ const server = express();
 //teach express how to parse the data of the body to json
 server.use(express.json())
 
-//import enpoints router
-const projectEndpoints = require('');
+//import endpoints router
+const projectEndpoints = require('./data/endpoints/projectEndpoints');
 
 //have server use your enpoints
 server.use('/api/projects', projectEndpoints)
