@@ -9,15 +9,14 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
 
-    
     Projects.getProjects()
-    .then(projects => {
-        {projects.map(data => {
-            if(data.completed === 1){
-                data.completed = true
-            } else {
-                data.completed = false
-            }
+        .then(projects => {
+            {projects.map(data => {
+                if(data.completed === 1){
+                    data.completed = true
+                } else {
+                    data.completed = false
+                }
         })}
             res.status(200).json(projects)
         })
@@ -31,9 +30,13 @@ router.get('/:id', (req, res) => {
     const { id } = req.params; 
 
     Projects.getProjectById(id)
-        .then(projects => {
-            
-            res.status(200).json(projects)
+        .then(project => {
+            if(project.completed === 1){
+                project.completed = true
+            } else {
+                project.completed = false
+            }
+            res.status(200).json(project)
         })
         .catch(err => {
             res.status(500).json(err.response)
@@ -45,6 +48,13 @@ router.get('/:id/tasks', (req, res) => {
 
     Projects.getTasks(id)
         .then(tasks => {
+            {tasks.map(task => {
+                if(task.completed === 1){
+                    task.completed = true
+                } else {
+                    task.completed = false
+                }
+            })}
             res.status(200).json(tasks)
         })
         .catch(err => {
@@ -55,6 +65,13 @@ router.get('/:id/resources', (req, res) => {
 
     Projects.getResources()
         .then(resources => {
+            {resources.map(resource => {
+                if(resource.completed === 1){
+                    resource.completed = true
+                } else {
+                    resource.completed = false
+                }
+            })}
             res.status(200).json(resources)
         })
         .catch(err => {

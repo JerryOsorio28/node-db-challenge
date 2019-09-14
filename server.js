@@ -18,18 +18,5 @@ server.get('/', (req, res) => {
     res.send('Server is up and running')
 })
 
-
-//Middleware to convert boolean value to true/false
-// const CompletedOrNot = (req, res, next) => {
-//     if (req.body.completed === 1){
-//         req.body.completed = true
-//     } else if (!req.body.completed){
-//         next();
-//     } 
-//     else {
-//         req.body.completed = false
-//     }
-// }
-
 //dont forget to export your server
 module.exports = server;
